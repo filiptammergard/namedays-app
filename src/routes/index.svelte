@@ -36,6 +36,14 @@
     .then(data => namedaysToday = data.map(nameday => nameday.name))
 
   const formatter = new Intl.ListFormat("en")
+
+  let timer;
+  const debounce = e => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      searchInput = e.target.value
+    }, 50)
+  }
 </script>
 
 <svelte:head>
@@ -45,7 +53,7 @@
 <h1 class="text-4xl text-center my-4">Nameday</h1>
 <h2 class="text-2xl text-center mb-2">Today's {namedaysToday.length > 1 ? "names are" : "name is"} {namedaysToday.length ? formatter.
   format(namedaysToday) : "none"}</h2>
-<input class="rounded p-2 border-2 border-gray-200 my-4 w-full focus:outline-none focus:border-black" type="text" placeholder="Search for names" bind:value={searchInput}/>
+<input class="rounded p-2 border-2 border-gray-200 my-4 w-full focus:outline-none focus:border-black" type="text" placeholder="Search for names" on:keyup={debounce}/>
 {#if searchResult.length}
 <section class="grid md:grid-cols-4 sm:grid-cols-2 gap-4">
   {#each searchResult as nameday}
