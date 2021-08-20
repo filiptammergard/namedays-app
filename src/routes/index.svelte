@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  import NamedayCardAdd from "$lib/NamedayCardAdd.svelte"; 
+  import NamedayCard from "$lib/NamedayCard.svelte"; 
   import NamedayCardAdded from "$lib/NamedayCardAdded.svelte";
   import type { Nameday } from "$lib/namedays";
   import { API_URL } from "$lib/env"
@@ -60,7 +60,7 @@
     {#if $savedNamedays.map(savedNameday => savedNameday.id).includes(nameday.id)}
       <NamedayCardAdded nameday={nameday} />
     {:else}
-      <NamedayCardAdd nameday={nameday} />   
+      <NamedayCard nameday={nameday} />   
     {/if}
   {/each}
 </section>
