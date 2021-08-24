@@ -3258,7 +3258,7 @@ export const namedays: Nameday[] = [
   },
   {
     id: "8-24-1",
-    name: "Bertolomeus",
+    name: "Bartolomeus",
     date: {
       month: 8,
       day: 24,
