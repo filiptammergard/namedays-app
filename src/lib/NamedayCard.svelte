@@ -5,7 +5,7 @@
   export let selected: boolean = false
   export let added: boolean = false
 
-  const monthString = new Date(new Date().getFullYear(), nameday.date.month - 1, nameday.date.day).toLocaleString("en", { month: "long"})
+  $: monthString = new Date(new Date().getFullYear(), nameday.date.month - 1, nameday.date.day).toLocaleString("en", { month: "long"})
 
   $: {
     if ($savedNamedays.includes(nameday)) {
@@ -25,7 +25,7 @@
 </script>
 
 <button on:click={added ? removeName : addName}>
-  <article class={`bg-gray-200 rounded p-2 flex justify-between hover:scale-105 transition ease-in-out ${selected ? "bg-black text-gray-200" : "bg-gray-200"}`}>
+  <article class={`bg-gray-200 rounded p-2 flex justify-between hover:scale-105 transition ease-in-out group-focus:outline-none group-focus:border-black ${selected ? "bg-black text-gray-200" : "bg-gray-200"}`}>
     <h1>{nameday.name}</h1>
     <p>{nameday.date.day} {monthString}</p>
   </article>
