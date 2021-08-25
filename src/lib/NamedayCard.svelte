@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Nameday } from "$lib/namedays";
+  import type { Nameday } from "namedays";
   import { savedNamedays } from "$lib/stores"
   export let nameday: Nameday
   export let selected: boolean = false

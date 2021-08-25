@@ -1,5 +1,4 @@
-import type { Nameday } from "$lib/namedays"
-import { namedays } from "$lib/namedays"
+import { Nameday, when } from "namedays"
 
 interface Params {
   params: {
@@ -9,16 +8,14 @@ interface Params {
 
 interface Data {
   status: number
-  body: Nameday[]
+  body: Nameday
 }
 
 export async function get({ params }: Params): Promise<Data> {
   const name = params.name
-  const result = namedays.filter(
-    (nameday) => nameday.name.toLowerCase() === name.toLowerCase(),
-  )
+  const body = when(name)
   return {
     status: 200,
-    body: result,
+    body,
   }
 }

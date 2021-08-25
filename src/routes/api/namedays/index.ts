@@ -1,9 +1,9 @@
-import type { Nameday } from "$lib/namedays"
-import { namedays } from "$lib/namedays"
+import { Nameday, namedays } from "namedays"
 
 export async function get(): Promise<{ status: number; body: Nameday[] }> {
+  const body = namedays
   return {
     status: 200,
-    body: namedays,
+    body,
   }
 }

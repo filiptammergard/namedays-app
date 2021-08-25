@@ -1,5 +1,4 @@
-import type { Nameday } from "$lib/namedays"
-import { namedays } from "$lib/namedays"
+import { date, Nameday } from "namedays"
 
 interface Params {
   params: {
@@ -16,11 +15,9 @@ interface Data {
 export async function get({ params }: Params): Promise<Data> {
   const month = parseInt(params.month, 10)
   const day = parseInt(params.day, 10)
-  const result = namedays.filter(
-    (nameday) => nameday.date.month === month && nameday.date.day === day,
-  )
+  const body = date({ month, day })
   return {
     status: 200,
-    body: result,
+    body,
   }
 }

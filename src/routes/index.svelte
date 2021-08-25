@@ -3,15 +3,17 @@
 </script>
 
 <script lang="ts">
+  import { Nameday, today, who } from "namedays";
   import NamedayCard from "$lib/NamedayCard.svelte"; 
-  import type { Nameday } from "$lib/namedays";
-  import { namedays, namedaysToday, savedNamedays } from "$lib/stores";
+  import { namedays, savedNamedays } from "$lib/stores";
   
   type Sorting = "chronological-asc" | "chronological-desc" | "alfabetical-asc" | "alfabetical-desc" | "name-length-asc" | "name-length-desc"
 
   let searchInput = "";
   let searchResult: Nameday[] = []
   let sorting: Sorting = "chronological-asc"
+
+  const namedaysToday = today().map(nameday => nameday.name)
 
   $: {
     if (searchInput !== "") {
@@ -106,8 +108,8 @@
 
 <h1 class="text-4xl text-center my-4">Nameday</h1>
 
-<h2 class="text-2xl text-center mb-2">{$namedaysToday.length ? formatter.
-  format($namedaysToday) : "None"} {$namedaysToday.length > 1 ? "have" : "has"} nameday today!</h2>
+<h2 class="text-2xl text-center mb-2">{namedaysToday.length ? formatter.
+  format(namedaysToday) : "None"} {namedaysToday.length > 1 ? "have" : "has"} nameday today!</h2>
 
 <div class="grid sm:grid-cols-2 gap-4 my-4">
   <input class="rounded p-2 border-2 border-gray-200 focus:outline-none focus:border-black" type="text" placeholder="Search for names" on:keyup={debounce}/>
