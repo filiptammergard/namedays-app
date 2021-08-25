@@ -1,4 +1,4 @@
-import { date, Nameday } from "namedays"
+import { Nameday, on } from "namedays"
 
 interface Params {
   params: {
@@ -13,7 +13,7 @@ interface Data {
 
 export async function get({ params }: Params): Promise<Data> {
   const month = parseInt(params.month, 10)
-  const body = date({ month })
+  const body = on({ month })
   return {
     status: 200,
     body,

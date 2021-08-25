@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  import { Nameday, today, who } from "namedays";
+  import { Nameday, today } from "namedays";
   import NamedayCard from "$lib/NamedayCard.svelte"; 
   import { namedays, savedNamedays } from "$lib/stores";
   
